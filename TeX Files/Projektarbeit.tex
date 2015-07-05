@@ -1,0 +1,637 @@
+\documentclass[12pt,a4paper,draft]{scrartcl} % <- Set option `draft` to `fianl` when finished! 
+% Typography
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % Modern Font for Typesetting of European Languages
+\usepackage[T1]{fontenc} % Modern Font encoding 
+\usepackage{microtype} % Better Hyphenation (with option `fianl`only)
+\usepackage[ngerman]{babel} 	% Hyphenation according to New German Orthography Standards +
+							% German Translatations of Enivronment Names, etc.
+\usepackage{csquotes}		% Automatic Typographic Quotes
+\MakeBlockQuote{«}{|}{»} 	% «Quote|Citatation»
+\AtBeginEnvironment{quote}{\slshape}			% Slanted `quote` envirnoment
+\renewcommand*{\mkcitation}[1]{ \textup{#1}}	% Upright Citation with «Quote|Citatation»
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+% BibLaTex
+\usepackage[style=numeric,bibstyle=numeric,backend=bibtex,labelnumber=true]{biblatex}
+\addbibresource{./content/Library.bib}
+
+%Abbildungen
+\usepackage{graphicx}
+%Position der Grafiken
+\usepackage{float}
+%Umfließender Text
+\usepackage{picins}
+
+%Abbildungsbeschriftungen
+\usepackage[font=scriptsize, labelfont=bf, hangindent=0cm]{caption}
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
+%Farben vordefinieren
+\definecolor{orange}{rgb}{1,0.45,0}
+
+%Kein Einzug bei neuen Absätzen
+\parindent0pt
+
+%Querverweise
+\usepackage[pdftex]{hyperref}
+\usepackage[capitalize]{cleveref}	% Automatically Display Names of Enivironments
+\Crefname{part}{Teil}{Teil}			% <-- ggf. ergänzen!
+\Crefname{section}{Abschnitt}{Abschnitt}
+\Crefname{subsection}{Unterabschnitt}{Unterabschnitt}
+\Crefname{figure}{Abb.}{Abb.}
+
+% ----------------------------------------------------------
+% Only for drafts!
+\usepackage{ifdraft}
+\usepackage[marginpar]{todo}
+\renewcommand{\todoformat}{\bfseries\color{red}}
+\usepackage[notcite,notref]{showkeys}   %Used in Drafts to Print references.
+\renewcommand*\showkeyslabelformat[1]{%
+  \fbox{\parbox[t]{1.4\marginparwidth}{\raggedright\normalfont\scriptsize\ttfamily#1}}}
+
+%-----------------------------------------------------------
+
+\usepackage[figure]{hypcap}	
+
+%Kommentar
+\usepackage{comment}								
+
+
+\begin{document}
+
+%Deckblatt
+\thispagestyle{empty}
+\begin{center}
+\Large{Technische Universität Wien}\\
+\end{center}
+
+
+\begin{center}
+\small{Institut für Geotechnik - Forschungsbereich für Grundbau, Boden- und Felsmechanik}\\
+\small{Institut für Geotechnik - Forschungsbereich für Ingenieurgeologie}
+\end{center}
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+\begin{center}
+\textbf{\LARGE{Projektarbeit}}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\begin{center}
+\textbf{im Studiengang Bauingenieurwesen}
+\end{center}
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+\begin{flushleft}
+\begin{tabular}{lll}
+\textbf{Thema:} 
+& & Teil 1: Theoretischer Teil -- \emph{Bohrtechnik}\\
+& & Teil 2: Praktischer Teil -- \emph{Probekörperentnahme von Injektionskörpern} \\
+& & \emph{anhand von perforierten Doppelkernrohren}\\
+& & \\
+& & \\
+& & \\
+\textbf{eingereicht von:} & & Patrick Gabriel \\
+& & Ahornweg 4\\
+& & 4171 St. Peter am Wimberg\\
+& & \\
+& & \\
+\textbf{eingereicht am:} & & Juli 2015\\
+& & \\
+& & \\
+\textbf{Betreuer:} & & Univ.Ass. Dipl.-Ing. Adrian Kainrath\\
+& &  Proj.Ass. Dipl.-Ing. Kurt Mair am Tinkhof
+\end{tabular}
+\end{flushleft}
+
+%Ende Deckblatt
+\newpage
+
+%Inhaltsverzeichnis
+\tableofcontents
+\newpage
+
+
+
+\part{Theoretischer Teil - Bohrtechnik}\label{Bohrtechnik}
+\input{./content/timstests.tex}
+
+
+\section{Einleitung}
+Ob in der Baugrunderkundung oder auf der Suche nach Bodenschätzen in der Erde - nahezu in allen technischen Bereichen kommt die Bohrtechnik zum Einsatz. Diese Projektarbeit soll einen kleinen Überblick über die in der Praxis dominanten Bohrverfahren geben sowie die Auswahl des Bohrverfahrens in Abhängigkeit der Geologie erleichtern. Zusätzlich werden die verschiedenen Bohrwerkzeuge - insbesondere die Bohrkronen - beschrieben und klassifiziert, was eine Auswahl der Bohrkrone in Abhängigkeit des Gesteins erleichtern soll.
+\section{Allgemein}
+
+Grundsätzlich kann der Bohrvorgang in drei relevante Aufgabengebiete unterteilt werden:
+
+\begin{itemize}
+\item Gesteinszerstörung an der Bohrlochsohle
+\item Reinigung der Bohrlochsohle und Transport des erbohrten Gesteins zum Bohrlochmund
+\item Abstützung der Bohrlochwände gegen Nachfall, Durchmesserverengung, einström\-enden Flüssigkeiten und Abfließen der Bohrspülung
+\end{itemize}
+
+Diese drei Aufgabengebiete sind dabei nahezu untrennbar miteinander verflochten, sodass eine Parameteränderung in einem Bereich sich auch auf alle anderen Teilbereiche auswirkt.\\
+
+\subsection{Gesteinszerstörung an der Bohrlochsohle}
+In der Regel besteht die Beanspruchung des Gesteins an der Bohrlochsohle vorwiegend aus Druck. Eine Zerstörung des Gesteins durch Überschreiten der Scherfestigkeit wäre zwar hinsichtlich des Verschleißes optimaler, jedoch können Gesteine nicht ausschließlich abscherend zerstört werden. Durch die Kombination beider Beanspruchungsarten entsteht zwangsläufig ein Verschleiß am Bohrwerkzeug.\\
+
+Für das Bohren in Festgestein gibt es zahlreiche Bohrwerkzeuge, die in der Arbeit näher beschrieben werden. Beim Bohren in Lockergestein ist die Anforderung hinsichtlich Druck- und Scherfestigkeit deutlich geringer, denn das Bohrgut muss lediglich aus seinem natürlichen Verband gelöst werden. Wichtiger ist beim Lockergestein die Auswahl des richtigen Bohrverfahrens, welches eine größere Rolle als die Bohrbarkeit des Bodens spielt. Hinsichtlich der Bohrbarkeit bedeutet unterschiedliches Lockergestein nur ein geringes plus oder minus an Verschleiß und Kraftaufwand.\\
+
+\subsection{Reinigung der Bohrlochsohle}
+Beim Verfahren mit im Bohrloch zirkulierender Bohrspülung übernimmt diese die Reinigung der Bohrlochsohle und den Austrag des Bohrkleins aus dem Bohrloch. Eine möglichst niedrige Dichte der Bohrspülung ist in diesem Fall anzustreben um eine möglichst hohe Aufnahme des Bohrkleins zu ermöglichen. Jedoch steht diese Anforderung in Widerspruch mit der Abstützung der Bohrlochwände, für die eine hohe Dichte zweckmäßig ist. Beide Anforderungen müssen aufeinander abgestimmt werden.\\
+
+Bei Bohrverfahren ohne Bohrspülung erfolgt die Reinigung entweder über die Entnahme des Bohrgutes im Kernrohr, im Greifer oder wird mithilfe von Schnecken an den Bohrlochmund gefördert.\\
+
+\subsection{Abstützung der Bohrlochwände}
+Die Abstützung der Bohrlochwände wird gewährleistet einerseits durch
+
+\begin{itemize}
+\item Maßhaltigkeit des Bohrloches: Je mehr ein Bohrloch von seiner Richtung abweicht, umso mehr werden die Wände durch das Bohrgestänge und durch die Bohrspülung beansprucht.
+\end{itemize}
+
+andererseits durch die
+
+\begin{itemize}
+\item 
+Bohrspülung: Wie bereits erwähnt wirkt die Bohrspülung abstützend und stabilisierend. Dabei sind speziell die Anforderungen aus ÖNORM EN 1997-2 \footnote{ÖNORM EN 1997-2: Eurocode 7 - Entwurf, Berechnung und Bemessung in der Geotechnik - Teil 2: Erkundung und Untersuchung des Baugrunds} und ÖNORM EN ISO 22475-1\footnote{ÖNORM EN ISO 22475-1: Geotechnische Erkundung und Untersuchung - Probenentnahmeverfahren und Grundwassermessungen - Teil 1: Technische Grundlagen der Ausführung (ISO 22475-1:2006)} zu berücksichtigen.
+\end{itemize}
+
+
+\section{Bohrwerkzeuge}
+\label{sec:bohrwerkzeuge}
+\subsection{Vollbohrkronen}
+\label{subsec:Vollbohrkronen}
+Vollbohrkronen sind Bohrwerkzeuge zum Abteufen von Vollbohrungen ohne Kerngewinn. Die Wahl der Bohrkrone ist von Faktoren wie Härte des Gesteins, Andruck, Drehgeschwindigkeit, Druckfestigkeit usw. abhängig. Gewisse Erfahrungswerte haben sich jedoch mit der Zeit bewährt. Die in der Praxis üblichen Bohrkronen können in fünf Hauptgruppen unterteilt werden:
+\begin{itemize}
+\item Rollenmeißel
+\item Flügelmeißel
+\item Diamant-Vollbohrkronen
+\item Hartmetall-Splitterkronen
+\item Stratapax-Vollbohrkronen
+\end{itemize}
+
+\subsubsection{Rollenmeißel}
+Rollenmeißel bestehen aus kegelartig geformten Rollen mit Zähnen oder Warzen. Diese Rollen werden passiv mitbewegt, was ein Lösen des Bodens oder des Felses zur Folge hat.
+Eine Verwendung dieser Bohrwerkzeuge eignet sich vorrangig für \emph{Lockergesteine und weiche Festgesteine} bzw. für eine \emph{Verwitterungszone oder Auflockerungszone der Festgesteine}. Für weiche Gesteine eignen sich lange Zähne, für harte Gesteine kurze Zähne bis hin zu Warzen.\\\\
+
+\begin{figure}[H]
+%\includegraphics[width=1\textwidth]{Bilder/Rollenmeissel.png}
+\caption{Rollenmeißel - COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 51}
+\end{figure}
+
+\newpage
+Rollenmeißel können nach dem \emph{IADC-Code} klassifiziert werden. Dieser Code erlaubt eine Einteilung der Rollenmeißel nach verschiedenen Kriterien:
+
+\begin{figure}[H]
+%%\includegraphics[width=1\textwidth]{Bilder/IADC-Code.png}
+\caption{Klassifizierung von Rollenmeißeln nach dem \emph{IADC-Code}}
+\end{figure}
+
+\newpage
+\subsubsection{Flügelmeißel}
+Flügelmeißel bestehen aus zwei, drei oder vier pultdach-förmig auslaufende Flügel, die mit Hartmetallplatten besetzt sind. Mit diesen Schneiden wird das Gestein gelöst. Die Einsatzbereiche sind wie beim Rollenmeißel \emph{Lockergesteine bis zu weichen oder aufgewitterten Festgesteinen}. Vorteile gegenüber den Rollenmeißel haben sie bei \emph{plattig ausgebildeten Festgesteinen}. Unter geeigneten Bedingungen lassen sich mit Flügelmeißel sehr hohe Bohrfortschritte erzielen.
+
+\begin{figure}[H]
+\centering
+%\includegraphics[width=8cm]{Bilder/Fluegelmeissel.png}
+\caption{Flügelmeißel - COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 53}
+\end{figure}
+
+\subsubsection{Diamant-Vollbohrkrone}
+Diamant-Vollbohrkronen eignen sich für den Einsatz in \emph{harten Gesteinen}. Sie können unterteilt werden in:
+
+\begin{itemize}
+\item \textbf{Oberflächenbesetzte Diamant-Bohrkronen:} Sie bestehen aus Diamanten in einer hochverschleißfesten Matrix. Nach Abnutzung der Diamanten können diese in der Matrix neu belegt werden. Generell sind für weiche Gesteine (wie z.B. Tonschiefer) eine grobe Diamantkörnung zu empfehlen und für harte Gesteine kleinere Diamanten (entsprechend dichter bestückt).
+\item \textbf{Imprägnierte Diamantbohrkronen:} Sie bestehen aus einer Matrix mit definiertem Volumenanteil an kleineren Diamanten. Sie \emph{schwimmen} sozusagen in der Matrix, was einen Verschleiß beider Materialen zur Folge hat. Da dieser sich ausbildende \emph{Schmirgeleffekt} nur in Ausnahmefällen effektiv ist, kommen diese Bohrkronen eher selten zum Einsatz.
+\end{itemize}
+
+\subsubsection{Hartmetall-Splitterkrone}
+Ähnlich wie Diamant-Vollbohrkronen verhalten sich Hartmetall-Splitterkronen. Anstelle der Diamanten kommen Hartmetall-Splitter zum Einsatz. Aufgrund der geringeren Härte eignen sich diese Vollbohrkronen nur für \emph{weiche Gesteine}.\\
+
+\subsubsection{Stratapax-Krone}
+Stratapax-Kronen sind besonders geeignet für \emph{weiche Gesteine}, sollten die Anforderungen hinsichtlich
+\begin{itemize}
+\item maßgenaue Bohrlöcher und
+\item hohe Vortriebsgeschwindigkeit
+\end{itemize}
+groß sein. Die Stratapax-Krone besteht aus Blättchen aus Wolframcarbid, die senkrecht auf der Schneide stehen. Häufig werden anstatt von Rollen- oder Flügelmeißel Vollbohrkronen mit Stratapax-Platten verwendet.
+
+\subsection{Kernbohrkronen}
+Der Unterschied der Kernbohrkronen zu den Vollbohrkronen ist, dass nicht das gesamte Gesteinsvolumen gelöst werden muss, sondern lediglich der Ringraum zwischen Bohrlochwandung und Kernumfang. Eine höhere Drehzahl und vergleichsweise geringerer Andruck der Bohrkrone wirkt sich gebirgsschonend aus. Die Wahl der Bohrkrone beruht großteils auf Erfahrung des Bohrgeräteführers. Auch die Kernbohrkronen lassen sich in vier Hauptgruppen unterteilen:
+
+\begin{itemize}
+\item Stiftbohrkronen
+\item Hartmetall-Splitterkronen
+\item Diamant-Kernbohrkrone
+\item Stratacut- oder Synset-Kernbohrkronen
+\end{itemize}
+
+\subsubsection{Stiftbohrkrone}
+Stiftbohrkronen sind zylindrische Werkzeuge, in denen sechseckige Widiastifte (kleine Metallstifte) eingebracht sind. Diese Stifte haben einen größeren Durchmesser als das Stahlrohr, um ein Festsitzen der Krone zu verhindern. Stiftbohrkronen eignen sich vorrangig für \emph{weichere Gesteine}.\\
+
+\newpage	
+\subsubsection{Hartmetall-Splitterkrone}
+Bei der Hartmetall-Splitterkrone ist der Kopf durch unregelmäßig angeordnete Hartmetallsplitter besetzt. Sie eignet sich für etwas härtere Gesteine als die Stiftkrone.
+\\
+\begin{figure}[H]
+\centering
+%\includegraphics[width=0.8\textwidth]{Bilder/Hartmetall-Splitterkrone.png}
+\caption{Hartmetallkronen - COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 38}
+\end{figure}
+
+\subsubsection{Diamant-Kernbohrkrone}
+In den meisten Fällen liefert der Gebrauch der Diamant-Kernbohrkrone die beste Kernqualität und die maßhaltigsten Bohrlöcher. Sie eignet sich hervorragend für \emph{harte Gesteine}. Sie besteht aus einem zylindrischen Stahlrohr, an deren Stirnseite eine Matrix mit Diamanten bestückt ist. Die Diamanten ragen über das Stahlrohr hinaus, um ein Festsitzen der Bohrkrone zu verhindern und damit das Bohrklein im Ringraum nach oben geführt werden kann. Ebenfalls wie die Diamant-Vollbohrkronen (vgl. Kapitel \ref{subsec:Vollbohrkronen}) können die Diamant-Kernbohrkronen in oberflächenbestückte Diamant-Kernbohrkronen und imprägnierte Diamant-Kernbohrkronen unterteilt werden, wobei die imprägnierten Diamant-Bohrkronen wesentlich häufiger als beim Vollbohren eingesetzt werden.\\
+
+\begin{figure}[H]
+\centering
+%\includegraphics[width=0.6\textwidth]{Bilder/Diamant-Kernbohrkrone.png}
+\caption{Diamant-Kernbohrkronen - COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 5}
+\end{figure}
+
+\newpage
+\textbf{Oberflächenbesetzte Diamant-Kernbohrkronen}\\\\
+Oberflächenbesetzte Diamant-Kernbohrkronen bestehen aus einzelnen Diamanten in einer hochverschleißfesten Matrix. Diese schwimmen nicht wie bei den imprägnierten Diamant-Kernbohrkronen in der Matrix, sondern befinden sich an der Oberfläche. Nach Abnützung der Diamanten kann die bestehende Matrix neu bestückt werden. Die im Handel üblichen oberflächenbesetzten Diamant-Kerntbohrkronen können mit 3 Parametern charakterisiert werden: Die Diamantqualität, die Steingröße und das Profil der Bohrkronen. Die Steingröße wird in Steinen pro Karat angegeben (spc). Als Faustregel kann gelten, dass in weicheren Formationen größere Steine (10-15spc) und in harten Formationen kleinere Steine (30-40spc) zu günstigeren Ergebnissen führen.\footnote{aus COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 6}\\\\
+
+\begin{figure}[H]
+\centering
+%\includegraphics[width=1\textwidth]{Bilder/Oberflaechenbesetzte_Diamantbohrkronen.png}
+\caption{Klassifizierung Oberflächenbesetzte Diamant-Kernbohrkronen - in Anlehnung an COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 6}
+\end{figure}
+
+\newpage
+\textbf{Imprägnierte Diamant-Kernbohrkronen}\\
+
+Imprägnierte Diamant-Kernbohrkronen bestehen aus einer Matrix mit eingebetteten kleinen Diamantsplittern. Die Matrix nützt sich beim Bohren ab und legt neue Diamanten frei. Dadurch bleibt die Krone sozusagen immer "'scharf"'. Die im Handel üblichen imprägnierten Diamantbohrkronen können mit 3 Parametern charakterisiert werden: Die Imprägnationshöhe, die Lippenform und die Härte der Matrix. Dieser Parameter ist besonders wichtig, denn die Härte ist verantwortlich für eine gleiche Abnützung der Diamanten und der Matrix.
+
+\begin{figure}[H]
+\centering
+%\includegraphics[width=1\textwidth]{Bilder/Impraegnierte_Diamantbohrkronen.png}
+\caption{Klassifizierung Imprägnierte Diamant-Kernbohrkronen - in Anlehnung an COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 11}
+\end{figure}
+
+
+\subsubsection{Stratacut und Synset-Kernbohrkronen}
+Bei Synset-Kernbohrkronen handelt es sich um oberflächenbesetzte Diamant-Kernbohrkronen, jedoch werden anstelle von Steinen künstlich hergestellte Diamantschneidkörper verwendet. Diese würfel- oder prismenförmigen Schneidkörper ragen dachartig aus der Matrix heraus. Der Haupteinsatz der Synset-Kernbohrkronen ist vorwiegend in nicht zu harten Gesteinen wie Kalkstein, Schiefer, Tonstein und Mergel. Insbesondere bei \emph{Wechsellagerungen} von festen und weichen Sedimentgesteinen erzielen diese Bohrkronen einen hohen Bohrfortschritt.\\
+Bei Stratacut-Bohrkronen bestehen die Schneidkörper ebenfalls wie bei den Stratapax-Kronen (vgl. Kapitel \ref{subsec:Vollbohrkronen}) aus Wolframkarbid-Scheiben, die quer zur Krone eingesetzt werden. Stratacut-Bohrkronen kommen hauptsächlich in \emph{nicht zu harten, wenig abrasiven Formationen} zum Einsatz.
+
+\begin{figure}[H]
+\centering
+%\includegraphics[width=1\textwidth]{Bilder/Stratacut.png}
+\caption{Stratacut-Bohrkrone und Synset-Diamantbohrkrone - COMDRILL Bohrausrüstungen GmbH: \emph{Bohrwerkzeuge - Injektionsausrüstungen}. 8. Ausgabe, Untereisesheim: 2013, S. 5}
+\end{figure}
+
+\section{Bohrverfahren}
+\subsection{Einteilung nach Art der Probeentnahme}
+\subsubsection{Durchgehende Gewinnung nicht gekernter Proben}
+Zu den Verfahren der durchgehenden Gewinnung nicht gekernter Proben zählen die Greiferbohrung, Schlagbohrung und die Drehbohrung.\\
+
+\textbf{Greiferbohrung}\\\\
+Wie in Abbildung \ref{fig:Bohrverfahren_Lockergestein} ersichtlich, ist bei der Greiferbohrung ein Bohrlochgreifer an einem Gestänge oder an einer Seilwinde befestigt, der das Bohrgut entfernt. Die üblichen Bohrdurchmesser sind 400mm bis 1000mm. Diese Methode ist geeignet für grobkörnige und gemischtkörnige Böden und wenig bis nicht geeignet für feste, bindige Böden.\\
+
+\textbf{Schlagbohrung}\\\\
+Wie in Abbildung \ref{fig:Bohrverfahren_Lockergestein} ersichtlich, ist bei der Schlagbohrung eine Büchse mit einer Schlagschnappe an einem Seil befestigt, die das Bohrgut entfernt. Die üblichen Bohrdurchmesser sind 150mm bis 600mm. Diese Methode ist geeignet für alle Bodenarten (Lockergestein), besonders für Bohrgutentnahme unterhalb des Grundwasserspiegels.\\
+
+\textbf{Drehbohrung}\\\\
+Bei der Drehbohrung wird (auch von Hand möglich) wie in Abbildung \ref{fig:Bohrverfahren_Lockergestein} ersichtlich eine Schnecke oder Spirale in den Boden (Lockergestein) eingebracht. Die üblichen Bohrdurchmesser sind 80mm bis 1000mm. Diese Methode eignet sich besonders für bindige Böden.
+
+\subsubsection{Durchgehende Gewinnung gekernter Proben}
+Zu den Verfahren der durchgehenden Gewinnung gekernter Proben zählen die Rotations-Trockenkernbohrung, Rotationskernbohrung mit Spülhilfe, die Rammkernbohrung und die Hohlschneckenbohrung.\\
+
+\textbf{Rotationskernbohrung}\\\\
+Die Rotationskernbohrung ist das am häufigsten angewandte Bohrverfahren für alle Böden. Mit diesem Verfahren ist ein vollständiger Kerngewinn möglich. Dazu ist ein Bohrgerät mit ruhigem, schlagfreiem Lauf und der Möglichkeit einer Drehzahl- und Bohrandruckregelung sowie eine druckdosierbare Spüleinrichtung nötig. Bei Kernbohrungen im Fels wird meist mit Wasserspülung gebohrt. Bei instabilen Bohrlochwänden werden Spülungszusätze verwendet, die zum Einen eine Stabilisierung des Bohrloches bewirken und zum Anderen die Austragsfähigkeit des Bohrkleins erhöhen. Bei den Kernrohren werden folgende Typen unterschieden (Helmut Prinz, Roland Strauß, 2011):
+
+\begin{itemize}
+\item \textbf{Einfachkernrohr }mit einer einfachen Schneidkrone am unteren Ende. Sie werden für Trockenbohrungen zum Durchbohren der Deckschichten und der entfestigten Oberzone des Gebirges verwendet. Bei Einfachkernrohren mit Spülung läuft diese im Kernrohr an dem abgebohrten Kern entlang, so dass dieser in der Regel stark ausgespült wird (Helmut Prinz, Roland Strauß, 2011).
+ 
+\item \textbf{Doppelkernrohre } sind so konstruiert, dass die Spülung zwischen Außen- und Innenrohr geleitet wird und erst zwischen Kernfanghülse und Kronenlippe mit dem Kern in Kontakt kommt. Der Kern ist damit nur einer geringen Ausspülung ausgesetzt. Das Doppelkernrohr kann wahlweise zusätzlich mit einem Kunststoffinnenrohr (sog. Liner) ausgestattet werden, das aufklappbar ist bzw. aufgeschnitten werden kann. Es wird für schwer zu bohrende, wasserempfindliche oder quellfähige Gebirgsarten eingesetzt, bzw. wenn kurzzeitiges Entweichen leicht flüchtiger Kontaminationen zu erwarten sind (Helmut Prinz, Roland Strauß, 2011).
+
+\item \textbf{Seilkernrohre } werden etwa ab einer Tiefe von 20m bevorzugt eingesetzt. Das Bohrverfahren unterscheidet sich vom konventionellen Bohren dadurch, dass zum Entleeren des Kernrohres nur das Innenkernrohr mittels eines Seiles und Fänger nach oben gebracht, entleert und wieder in das Bohrloch eingeführt wird. Der rotierende Bohrstrang bleibt als Verrohrung im Bohrloch (Helmut Prinz, Roland Strauß, 2011). 
+\end{itemize}
+
+Bei normalen Doppelkernrohren betragen die üblichen Kernmarschlängen in gutem Gebirge 1 bis 3m, in schlecht kernfähigem Gebirge 0,5 bis 1,0m. Bei Seilkernrohren werden häufig 2 bis 3m abgebohrt. Die Bohrkronen müssen dem jeweiligen Gebirge angepasst sein (siehe Kapitel \ref{sec:bohrwerkzeuge}). Übliche Bohrdurchmesser sind 65 bis 220mm.
+
+  \begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+     \centering
+      %\includegraphics[width=0.5\textwidth]{Bilder/Einfachkernrohr.png}
+      \caption{Einfachkernrohr - Arisleidy Stolzenberger-Ramirez: \emph{GeoDZ.com}, URL http://www.geodz.com, Stand: 29.06.2015}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+     \centering
+      %\includegraphics[width=0.5\textwidth]{Bilder/Doppelkernrohr.png}
+      \caption{Doppelkernrohr - Arisleidy Stolzenberger-Ramirez: \emph{GeoDZ.com}, URL http://www.geodz.com, Stand: 29.06.2015}
+    \end{minipage}
+  \end{figure}
+
+
+\textbf{Rammkernbohrung}\\\\
+Die Rammkernbohrung unterscheidet sich zu der Rotationskernbohrung dadurch, dass Einfach- oder Doppelkernrohre in den Boden durch Rammschläge getrieben wird. Beim Einrammen tritt der Boden durch einen offenen Rammschuh in das Kernrohr und kann durch Ziehen und Aufklappen des Kernrohrs jederzeit besichtigt werden. Man erhält die Bodenschichten in der natürlichen Reihenfolge, allerdings je nach Bodenart mehr oder weniger zusammengedrückt. Stößt die Bohrung auf harte Schichten, versagt dieses Verfahren. Auch bei sehr dicht gelagerten Böden ist die Rammkernbohrung nicht wirtschaftlich einsetzbar (Arisleidy Stolzenberger-Ramirez, 2010).\\
+
+\newpage
+\textbf{Hohlschneckenkernbohrung}\\\\
+Diese Bohrmethode eignet sich nur in lockeren und bindigen Schichten. Sie ist nicht geeignet für Kernentnahmen aus kohäsionslosen und wassergesättigten Schichten und daher nur bedingt einsetzbar. Als Bohrgestänge wird eine Hohlbohrschnecke verwendet. Die laufende Kernentnahme erfolgt im Wesentlichen ähnlich dem Seilkernbohrverfahren (Dipl.-Ing. Peter DIELACHER, 2010). 
+
+\subsubsection{Gewinnung unvollständiger Bodenproben}
+Zu den Bohrverfahren mit Gewinnung unvollständiger Bodenproben zählen die Schlagbohrung und die Spülbohrung.\\
+
+\textbf{Schlagbohrung}\\\\
+Bei der Schlagbohrung erfolgt die Gesteinszerstörung durch auf die Bohrlochsohle schlagende Bohrwerkzeuge. Die Schlagwirkung kann dabei durch freien Fall (Seilbohren) oder mittels Gestänge erzielt werden.\\
+
+\textbf{Spülbohrung}\\\\
+Bei Bohrungen mit Vollbohrkronen können unvollständige Bodenproben aus der rücklaufenden Spülung gewonnen werden.\\
+
+\subsection{Einteilung nach Art des Lösevorganges}
+
+Angelehnt an \emph{Ulrich Sebastian: Gesteinskunde}\footnote{Ulrich Sebastian: \emph{Gesteinskunde - Ein Leitfaden für Einsteiger und Anwender}, Bd. 3. Aufl. Berlin: Springer Verlag, 2014, S.111} kann zwischen folgenden Arten des Lösevorgangs unterschieden werden (vgl. Abbildung \ref{fig:Bohrverfahren_Lockergestein}):
+
+\begin{itemize}
+
+\item Drehend
+	\begin{itemize}
+	\item Rotations-Trockenkernbohrung (ohne Spülung)
+	\item Drehbohrung (ohne Spülung)
+	\item Rotationskernbohrung (mit Spülung)
+	\item Rotary-Rotationsspülbohrung (mit Spülung)
+	\end{itemize}
+	
+\item Hammernd
+\begin{itemize}
+	\item Hammerbohren (ohne Spülung)
+	\item Imlochhammer-Bohren (mit Spülung)
+\end{itemize}
+
+\item Rammend
+	\begin{itemize}
+	\item Rammbohrung (ohne Spülung)
+	\item Rammkernbohrung (ohne Spülung)
+	\end{itemize}
+
+\item Schlagend
+	\begin{itemize}
+	\item Schlagbohrung (ohne Spülung)
+	\end{itemize}
+
+\item Drehend \& Rammend
+	\begin{itemize}
+	\item Rammrotationskernbohrung (mit Spülung)
+	\end{itemize}
+
+\item Drückend
+	\begin{itemize}
+	\item Druckkernbohrung (ohne Spülung)
+	\end{itemize}
+	
+\item Greifend
+	\begin{itemize}
+	\item Greiferbohrung (ohne Spülung)
+	\end{itemize}
+
+\item Kleinbohrung
+	\begin{itemize}
+	\item Drehend: Handdrehbohrung (ohne Spülung)
+	\item Rammend: Kleinrammbohrung (ohne Spülung)
+	\item Drückend: Kleindruckbohrung (ohne Spülung)
+	\end{itemize}
+
+\end{itemize}
+
+\subsection{Auswahl des Bohrverfahrens}
+Die Auswahl des Bohrverfahrens ist unter folgenden Gesichtspunkten zu entscheiden:
+
+\begin{itemize}
+\item Art der Probe, die gewonnen werden möchte (ungestörte Probe, Spülung,...)
+\item Tiefe der Bohrung
+\item Art des Gesteins (Lockergestein, Festgestein,...)
+\end{itemize}
+
+\begin{figure}[H]
+%\includegraphics[width=16cm]{Bilder/Bohrverfahren_Lockergestein.png}
+\caption{Verfahren für das Bohren nach Art des Lösevorgangs - in Anlehnung an Ulrich Sebastian: \emph{Gesteinskunde - Ein Leitfaden für Einsteiger und Anwender}, Bd. 3. Aufl. Berlin: Springer Verlag, 2014, S.111}
+\label{fig:Bohrverfahren_Lockergestein}
+\end{figure}
+
+
+\section{Bohren im Lockergestein}
+Lockergesteine zählen zu der wichtigsten Gesteingruppe, da in 100\% der Fälle an der Erdoberfläche gebaut wird. Im wesentlichen befinden sich gerade in diesem Bereich alle Sedimente, die durch Transport und Ablagerung sowie anschließender Verwitterung (meistens unsortiert) abgelagert wurden.
+
+\subsection{Technische Eigenschaften von Lockergestein}
+Die Einteilung geschieht durch Siebung und Sedimentationsanalyse, aus denen auf die Häufigkeitsverteilung der Korngrößen geschlossen werden kann.\footnote{ÖNORM B4412 - Geotechnische Erkundung und Untersuchung - Laborversuche an Bodenproben - Teil 4: Bestimmung der Korngrößenverteilung}\\
+
+Für die Beurteilung der Porosität wird die Ungleichförmigkeitszahl herangezogen. Die Zahl ist höher, je kleiner der Ungleichförmigkeitsgrad ist.\\
+
+Weitere Eigenschaften hinsichtlich der Bohrbarkeit sind speziell für bindige Böden die Plastizitätseigenschaften. Hierbei spielen die Zustandsgrenzen, wie Fließgrenze, Ausrollgrenze und Schrumpfgrenze eine große Rolle.\\
+
+Zusammenfassend zu den technischen Eigenschaften von Lockergestein lässt sich hinsichtlich der Bohrbarkeit sagen: Grobkörnige und gemischtkörnige Böden werden durch die Summenkurve und Ungleichförmigkeitszahl beschrieben, feinkörnige Böden durch die Zustandsgrenzen.
+
+\subsection{Bohrbarkeit von Lockergestein}
+\label{subsec:Bohrbarkeit_Lockergestein}
+Wie bereits erwähnt spielt die Auswahl des Bohrverfahrens eine größere Rolle für den Verschleiß und den Kraftaufwand als die Bohrbarkeit des Bodens. Abbildung \ref{fig: Bohrbarkeit_Lockergestein} zeigt einen Überblick über die empfohlenen Bohrverfahren im jeweiligen Boden. Obwohl beim Bohren in Lockergestein die Gesteinszerstörung an der Bohrlochsohle entfällt, gibt es zahlreiche Einflüsse, die in der Praxis trotzdem zu beachten sind.\\
+
+Grundsätzlich darf die Korngröße nicht zu groß sein. (Steine mit einem Durchmesser von 
+30cm passen nicht in ein Rammgerät mit 5cm Durchmesser.) Ist der Korndurchmesser knapp 
+kleiner als der Bohrdurchmesser, ist die Gefahr des "`Verklemmens"' sehr groß. Optimal ist eine maxiale Korngröße von \emph{1/5 bis 1/3 des Bohrwerkzeuges}.\\
+
+Spezielle Behandlung ist bei Geröll gefragt. Beim Bohren dieses Lockergesteins reicht es nicht, nur das Bohrgut aus seinem natürlichen Verbund zu lösen, sondern das Einzelkorn muss dabei zerstört werden (siehe Kapitel \ref{subsec:fest-verfahren}). Dabei bietet sich ein \emph{schlagendes Bohrverfahren} wie die Schlag- oder Rammrotationsbohrung an.\\
+
+Bei gemischtkörnigen und feinkörnigen Böden entscheidet der Anteil der kleinsten Korngrößen über die Adsorptionskräfte der Tonminerale. Ist der Anteil an kleinen Korngrößen sehr groß, wird der Boden stark bindig und schwer bearbeitbar. Der Wassergehalt entscheidet dabei, ob er als flüssig, breiig oder fest klassifiziert wird.\\
+
+Einen weiteren großen Einfluss auf die Bohrbarkeit hat die Wasserführung. Wichtig ist dabei, ob die Bohrung über oder unter dem Grundwasser erfolgt. Wasser schmiert in der Regel die Bodenpartikel, was sich vorteilhaft auf die Reinigung der Bohrlochsohle und Transport des erbohrten Gesteins zum Bohrlochmund auswirkt, hemmt aber zugleich die Beweglichkeit der Körner für die Platznahme vom Bohrgestänge.\\
+
+Zusammenfassend ist die Bohrbarkeit von folgenden Parametern abhängig:
+
+\begin{itemize}
+\item \textbf{Kornverteilung:} Häufigkeitsverteilung der Korngrößen, Ungleichförmigkeitszahl
+\item \textbf{Mächtigkeit}
+\item \textbf{Lagerungsdichte}
+\item \textbf{Wassergehalt:} Zustandsgrenzen
+\item \textbf{Bohrhindernisse}
+
+\end{itemize}
+
+\subsection{Bohrverfahren im Lockergestein}
+
+\begin{figure}[H]
+%\includegraphics[width=16cm]{Bilder/Bohrbarkeit_Lockergestein.png}
+\caption{Kategorisierung der Bohrverfahren zu den jeweiligen Lockergesteinen - in Anlehnung an Ulrich Sebastian: \emph{Gesteinskunde - Ein Leitfaden für Einsteiger und Anwender}, Bd. 3. Aufl. Berlin: Springer Verlag, 2014, S.113}
+\label{fig: Bohrbarkeit_Lockergestein}
+\end{figure}
+
+D = Innendurchmesser des Bohrwerkzeugs\\
+dmax = maximaler Korndurchmesser
+
+\section{Bohren im Festgestein}
+Grundsätzlich nennt man ein Gestein Festgestein, wenn es nach mehrstündlicher Lagerung in Wasser nicht aufweicht oder zerbröckelt. Eine mögliche Einteilung der Festgesteine ist einerseits hinsichtlich der Lösbarkeit (leicht lösbarer Fels, schwer lösbarer Fels), andererseits hinsichtlich der geologischen Gliederung (Sedimentgesteine, magmatische Gesteine und metamorphe Gesteine).
+
+\subsection{Technische Eigenschaften von Festgestein}
+Die Eigenschaften der Festgesteine können durch eine Reihe von Kennwerten beschrieben werden:
+
+\begin{itemize}
+\item Körnigkeit
+\item Raumerfüllung
+\item Härte der Mineralien
+\item Festigkeit
+\item Verwitterungsgrad
+\item Löslichkeit in Wasser
+\item ...
+\end{itemize}
+
+Eine besondere Bedeutung ist dem Trennflächengefüge beizumessen. Fels ist sehr anfällig für Brüche. Die Anisotropie bestimmt die technischen Eigenschaften mehr als die Gesteinsart. Dafür gibt es den Begriff des Gebirges:
+
+\begin{quote}
+Gebirge = Gestein + Trennflächengefüge
+\end{quote}
+
+Sind beim Lockergestein die Poren der Wasserleiter, ist das Wassertransportmedium im Gebirge das Trennflächengefüge. Die Porosität des Gebirges kann mehr oder weniger als null angesehen werden, weshalb auch die Lagerungsdichte und die Verdichtbarkeit für die Beschreibung von Festgesteinen keine Rolle spielt. Die Dichte der Festsubstanz ist dabei nahezu die Dichte des Gesteins.\\
+Zur Bestimmung der Festigkeit gibt es eine Reihe von Kennwerten:
+\begin{itemize}
+\item \textbf{Dreiaxiale Druckfestigkeit:} eher seltene Anwendung in der Praxis
+\item \textbf{Einaxiale Druckfestigkeit:} wird in der Praxis universal angewandt, ist leicht zu bestimmen und bildet die Grundlage geotechnischer Gesteinsklassifizierung (Im Feld lässt sich die einaxiale Druckfestigkeit gut mithilfe Fingernagel, Messer oder einen Hammer abschätzen.)
+\item \textbf{Zugfestigkeit:} wird im Spaltzugversuch ermittelt, trifft eine Aussage über die Kornbindung
+\item \textbf{Biegezugfestigkeit:} wird in der Praxis eher für Natursteine angewandt
+\item \textbf{Scherfestigkeit:} wird meist im Triaxialversuch ermittelt
+\end{itemize}
+
+Das Trennflächengefüge lässt sich folgendermaßen unterteilen:
+\begin{itemize}
+\item \textbf{Schichtung:} entstehen durch Ablagerung von Sedimenten
+\item \textbf{Schieferung:} entstehen durch Ausrichtung existierender Schichtsilikate (metamorphe Gesteine)
+\item \textbf{Klüfte:} entstehen durch Spannungen im Gebirge unter spröden Bedingungen
+\item \textbf{Störungen und Verwerfungen:} entstehen ähnlich wie Klüfte, nur versetzt
+\end{itemize}
+
+Zusätzlich spielt die Häufigkeit der Trennflächen sowie die Raumlage der Trennflächen eine große Rolle.
+
+\subsection{Bohrbarkeit von Festgestein}
+Während die Auswahl des Bohrverfahrens im Lockergestein von der Korngröße, Bindigkeit und der Wasserführung abhängt, hängt die Auswahl des Bohrverfahrens im Festgestein hauptsächlich von der Festigkeit ab. (vgl. Kapitel \ref{subsec: Bohrbarkeit_Lockergestein})
+
+Grundsätzlich ist eine Verbindung zwischen Gesteinsart und Bohrbarkeit nicht ganz einfach herzustellen, was an weiteren Eigenschaften des Fels liegt. Es sind bereits vielfältige Überlegungen angestellt worden, um technische Gesteinseigenschaften in Bohrbarkeitsskalen zu erfassen. Nachfolgend werden diese kurz erläutert:
+
+\subsubsection{Dichte (nach Rösler \& Lange 1969)}
+Zur ersten Abschätzung der Bohrbarkeit des Gesteins lassen sich anhand der Dichte schon viele Informationen herauslesen. Als Faustregel lässt sich sagen: Je höher die Dichte, desto schlechter ist die Bohrbarkeit des Gesteins.
+\subsubsection{Druckfestigkeit (nach Müller 1991)}
+Die Druckfestigkeit dient als Orientierungshilfe bei der Wahl des Bohrwerkzeuges. Gesteine werden beim Bohren vorwiegend auf Druck beansprucht. Die Druckfestigkeit ist dabei die Festigkeit des Gesteins bei (einaxialer) senkrechter Belastung.
+\subsubsection{Gesteinsritzhärte (nach DIN 4022 und Prinz \& Strauß 2011)}
+Die Härte ist eine der am stärksten zu beachtenden Eigenschaften. Bekannt ist im Allgemeinen die Mohs'sche Härteskala. Sie basiert darauf, dass ein Mineral dann härter ist, als ein anderes, wenn man damit imstande ist, das jeweils weichere Mineral zu ritzen. Diese Härteskala bezieht sich jedoch lediglich auf Mineralien. Gesteine bestehen bekanntlich aus mehreren Mineralien. Zur Ermittlung der Gesteinshärte gibt es analog zur Mohs'schen Härteskala die Härteskala nach Prinz \& Strauß 2011 und DIN 4022. Diese Skala klassifiziert die Gesteine hinsichtlich ihrer Reaktion auf Ritzen. Das härteste Material hat die Härte 10, das weichste Material die Härte 1.\\
+
+Zusätzlich können die Gesteine durch die Härte nach Schreiner gekennzeichnet werden. Dabei wird ein Stahlstempel in eine plan geschliffene Gesteinsprobe gedrückt. Die maximale Druckkraft beim Bruch ist das Maß für die Gesteinshärte.
+\subsubsection{Gesteinsfestigkeit (nach Protodjakonov 1961)}
+Die Gesteinsfestigkeit nach PROTODJAKONOV 1961 ist eine Kennziffer für die Formänderungsarbeit beim Bruch und dadurch ein Maß für die Gewinnbarkeit beim Bohren. Sie darf auf keinen Fall mit der Druckfestigkeit verwechselt werden. Das Härteste Material hat die Kennziffer I, das weichste Material hat die Kennziffer X.
+\subsubsection{Lösbarkeit (nach Locker 1967)}
+Die Lösbarkeit nach LOCKER 1967\footnote{LOCKER, F.: Eine Klassifikation der Gesteine nach dem Hartmetallverbrauch an den Untertage-Votriebsgewinnungsmaschinen. Felsmechanik u. Ingenieurgeologie Suppl. III. Wien-New York : Springer Verlag, 1967, 11-18} legt den Metallverbrauch an Bohr-, Gewinnungs- und Vortriebsmaschinen zu Grunde. Die Skala ist dabei zwischen 1 und 100 eingeteilt. Je höher der Metallverbrauch, desto schlechter ist die Bohrbarkeit des Gesteins. Als obere Grenze ist der Granit mit einer Lösbarkeit von 100 festgelegt.
+
+\subsubsection{Abriebfestigkeit (nach Müller 1991)}
+Die Abriebfestigkeit ist ein Kennwert für den Widerstand von Gesteinen gegen eine schleifende und reibende Beanspruchung. Eine Gesteinszerstörung durch Abrieb soll möglichst vermieden werden. Günstig ist eine Gesteinszerstörung durch Herausbrechen von Teilchen. Die Abriebfestigkeit nach MÜLLER 1991 ist dabei das Volumen des Gesteinsabriebs beim Schleifen, bezogen auf 50cm$^2$ . Die Abriebfestigkeit gibt sozusagen Auskunft auf die richtige Drehgeschwindigkeit und Belastung des Bohrwerkzeuges.
+\subsubsection{Gesteinsklassifikation nach Plastizitätskoeffizient (aus russischer Literatur)}
+Tongesteine, Salzgesteine und Sedimentgesteine mit hohem tonigem Anteil besitzen plastische Eigenschaften. Diese haben Einfluss auf die Maßhaltigkeit des Bohrloches. Im schlimmsten Fall kann es zu einem Festsitzen des Bohrstranges kommen. Je höher die Ziffer, umso besser die Plastizitätseigenschaften. Je kleiner die Ziffer, umso anfälliger ist das Gestein auf Verengung des Bohrloches.
+\subsubsection{Abrasivitätswert (nach Sheperd)}
+Durch Verschleißerscheinungen wird die Lebensdauer der Bohrkrone verringert. Ein hoher Verschleiß wirkt sich negativ auf die Kosten aus und ein mehrmaliges Wechseln der Bohrkrone erfordert einen entsprechenden Zeitaufwand. Neben der Wahl der richtigen Bohrkrone hat die Gesteinsart einen wesentlichen Einfluss auf den Verschleiß. Abgeschätzt werden kann dieser Verschleiß durch den Abrasivitätswert nach Sheperd. Dabei wird ein Bronzestab mit 15,9mm Durchmesser und 570N Belastung sowie 180U/min auf eine plangeschliffene Gesteinsprobe gedrückt. Nach einer Dauer von 5 oder 15 Minuten wird der Abrieb am Metallkörper gewogen. Je höher der Abrasivitätswert, desto mehr Verschleißerscheinungen sind zu erwarten.
+\subsubsection{Bohrbarkeiten für verschiedene Bohrverfahren (aus russischer Literatur)}
+Je höher die Ziffer für die Bohrbarkeiten für verschiedene Bohrverfahren, desto schlechter Bohrbar ist das Gestein. Als Beispiel wird die Gesteinsbohrbarkeit für drehende Bohrverfahren nach PROTODJAKONOW-SCHREINER angegeben:
+
+\begin{itemize}
+\item \textbf{I - Lockergeschüttete Gesteine: } Sand, lockere, lehmige Sandböden ohne Geröll, lockerer Löß, feuchter Schlamm.		
+\item \textbf{II - Lockere, bröckelige Gesteine: } grobkiesige Sande, sandige Lehmböden, Tone mittlerer Härte, weicher Mergel, lockere Verwitterungsprodukte von Ergussgesteinen und metamorphen Gesteinen.
+\item \textbf{III - Weiche Gesteine: } sandige Lehmböden mit etwas Geröll (bis 20\%), verwitterte Kalksteine, schwach verfestigte Sandsteine mit Ton- und Kalkeinlagen, Muschelkalk, Mergel, Gips, weiche Steinkohle, Braunkohle, Salzgestein.
+\item \textbf{IV - Weiche bis mittelharte Gesteine: } sandige, tonige Schiefer, feste Mergel, lockere Kalksteine, feste Kreide, kristalliner Gips, Anhydrit, Kaolin, weiches Eisenerz, feste Steinkohle, Hartbraunkohle.
+\item \textbf{V - Mittelharte Gesteine: } kiesige Schichten mit Geröll, lehmige Schiefergesteine, Schieferton, Kalksteine, Marmor, mergelhaltige Dolomite, Sandsteine mit Kalkeinlagerungen, harte Steinkohle, Anthrazit, gefrorene Böden.
+\item \textbf{VI - Mittelharte Gesteine: } Glimmerschiefer, dolomithaltiger Kalkstein, Konglomerate mit kalkhaltigem Bindemittel, feldspathaltige, kalkhaltige Sandsteine.
+\item \textbf{VII - Mittelharte bis harte Gesteine: } Tonschiefer, quarzhaltige Sandsteine, Dolomit, quarzhaltige Feldspäte, Sandsteine, Diabastuffe, Porphyrtuffe mit Geröll, stark verwitterte Eruptivgesteine, Granit, Diorit, Syenit, Gabbro und weitere Ergussgesteine.
+\item \textbf{VIII - Harte Gesteine: } siliziumhaltige Schiefergesteine, Konglomerate von Ergussgesteinen, härtere Tuffgesteine, verwitterte Ergussgesteine.
+\item \textbf{IX - Harte bis sehr harte Gesteine: } sehr harte Kalksteine und Sandsteine, sehr harte Tuffgesteine.
+\item \textbf{X - Sehr harte Gesteine: } feinkörnige Granite, Syenite, Diorite, Gneise und weitere Erguss- und metamorphe Gesteine mit hohem Quarzgehalt.
+\item \textbf{XI - Sehr harte bis extrem harte Gesteine: } Quarzit, sehr harte Erguss- und metamorphe Gesteine.
+\item \textbf{XII - Extrem harte Gesteine: } Quarzit, Hornstein, Feuerstein, Takonit, Korundgesteine.
+\end{itemize}
+
+\subsubsection{Zusammenfassung}
+
+Zur Orientierung sind die jeweiligen Bohrbarkeitsskalen für die häufigsten Gesteinsarten zusammengefasst: 
+
+\begin{figure}[H]
+%\includegraphics[width=16cm]{Bilder/Bohrbarkeit_Festgestein.png}
+\caption{Bohrbarkeit von Festgestein - Ulrich Sebastian: \emph{Gesteinskunde - Ein Leitfaden für Einsteiger und Anwender}, Bd. 3. Aufl. Berlin: Springer Verlag, 2014, S.159}
+\label{fig: Bohrbarkeit_Festgestein}
+\end{figure}
+
+Da jeder dieser Autoren andere Gesteine untersuchte, ist diese Übersicht unvollständig und dient lediglich der Orientierung.\\\\
+
+Zusammenfassend ist die Bohrbarkeit im Festgestein von folgenden Parametern abhängig:
+
+\begin{itemize}
+\item \textbf{Gesteinsart:} wichtigster Parameter, ausschlaggebend für die Abrasivität
+\item \textbf{Zerlegung, Verwitterung:} Festigkeitsunterschiede zwischen verwittertem und unverwittertem Festgestein sind gravierend
+\item \textbf{Klüftung:} ausschlaggebend für die Maßhaltigkeit der Bohrlöcher
+\item \textbf{Hohlräume}
+\item \textbf{Wasserverhältnisse}
+\end{itemize}
+
+
+
+\subsection{Bohrverfahren im Festgestein}
+\label{subsec:fest-verfahren}
+Der große Unterschied zum Bohren im Lockergestein ist die Gesteinszerstörung. Das Korngerüst muss vollständig zerstört bzw. aufgelöst werden. Das bedeutet insbesondere:
+
+\begin{itemize}
+\item Höhere Ansprüche an das Bohrwerkzeug bezüglich Härte und Verschleiß.
+\item Die Spülung ist wegen höherer Reibung und Wärmeerzeugung bis auf wenige Ausnahmen Pflicht.
+\item Die notwendige Kraftübertragung funktioniert ausschließlich durch drehende Bohrverfahren.
+\end{itemize}
+
+Während beim Bohren in Lockergestein ein sehr breites Spektrum an Bohrverfahren zur Verfügung steht, reduziert sich dieses beim Festgestein auf ein Minimum. Nachfolgend sind die in der Praxis hauptsächlich verwendeten Bohrverfahren im Festgestein angegeben:
+
+\begin{itemize}
+\item Rotationskernbohrung (mit Spülung)
+\item Imlochhammer-Bohren (mit Spülung)
+\end{itemize}
+
+Die Auswahl der richtigen Bohrkrone (vgl. Kapitel \ref{sec:bohrwerkzeuge}) ist hier entscheidend.
+
+\newpage
+\part{Praktischer Teil - Probekörperentnahme von Injektionskörpern anhand von perforierten Kernrohren}
+
+\setcounter{section}{0}
+
+\section{Beschreibung des Verfahrens}
+
+\section{Bodenmechanische Untersuchung}
+
+\subsection{Frühfestigkeit des Injektionskörpers}
+
+\subsection{Ansetzbare Reibung}
+
+\vspace{\fill}
+\nocite{*}                              % Prints all entries of the bibliography irrespective of their use in the document.
+\printbibliography
+
+
+\ifdraft{%
+	\newpage	%
+	\todos%
+}
+
+\end{document}
